@@ -1,0 +1,31 @@
+#server:
+#  port: 8082
+#
+
+
+
+#  datasource:
+#    url: jdbc:mysql://127.0.0.1/activity
+#    username: root
+#    password: root
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#
+#  jpa:
+#    hibernate:
+#      ddl-auto: update
+#      properties:
+#        hibernate:
+#          show_sql: true
+#          use_sql_comments: true
+#          format_sql: true
+
+
+spring:
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/fitnessActivity
+  application:
+    name: activity-service
+
+server:
+  port: 8082
