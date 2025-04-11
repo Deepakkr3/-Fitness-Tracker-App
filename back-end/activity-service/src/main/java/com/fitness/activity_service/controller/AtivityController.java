@@ -30,4 +30,8 @@ public class AtivityController {
     public ResponseEntity<List<Activity>> getAll(){
         return ResponseEntity.ok(activityService.getAll());
     }
+    @GetMapping("/user")
+    public ResponseEntity<List<Activity>> getActivityByUserId(@RequestHeader("X-User-Id") String userid){
+        return ResponseEntity.ok(activityService.getActivityByUserId(userid));
+    }
 }

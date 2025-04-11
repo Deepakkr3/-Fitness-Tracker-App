@@ -12,9 +12,10 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Data
 public class ActivityRequest {
-    private String userid;
+    private String userId;
     private ActivityType activityType;
     private  Integer duration;
     private  Integer calory;
     private LocalDateTime startTime;
+    private Object activity;
 }

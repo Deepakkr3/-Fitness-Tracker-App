@@ -6,11 +6,14 @@ import com.fitness.userservice.dto.UserResponse;
 import com.fitness.userservice.model.UserC;
 import com.fitness.userservice.repo.UserRepo;
 import jakarta.validation.Valid;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;
 
+
+@Slf4j
 @Service
 public class UserService {
 
@@ -43,5 +46,10 @@ public class UserService {
 
     public Iterable<UserC> getAllUsers() {
         return userRepo.findAll();
+    }
+
+    public Boolean isUserExist(String userId) {
+        log.info("claaing user validation servise in user microservise {}",userId);
+        return userRepo.existsById(userId);
     }
 }

@@ -19,11 +19,10 @@ import java.util.UUID;
 public class UserC {
   @Id
   @GeneratedValue(strategy = GenerationType.UUID)
-    private String id;
-
+  private String id;
   @Column(unique = true, nullable = false)
-    private String email;
-  @Column(nullable = false)
+  private String email;
+   @Column(nullable = false)
     private String password;
     private String firstName;
     private String lastName;

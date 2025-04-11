@@ -26,7 +26,7 @@ import java.time.LocalDateTime;
 public class Activity {
    @Id
     private String activityId;
-    private  String id;
+
     private String userId;
     private ActivityType activityType;
     private  Integer duration;
@@ -39,4 +39,5 @@ public class Activity {
     private LocalDateTime createAt;
 @LastModifiedDate
     private LocalDateTime updatedAt;
+    private Object activity;
 }

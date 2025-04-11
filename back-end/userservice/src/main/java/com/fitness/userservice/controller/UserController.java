@@ -37,4 +37,10 @@ public class UserController {
     public ResponseEntity<Iterable<UserC>> getAllUsers() {
         return ResponseEntity.ok(userService.getAllUsers());
     }
+
+    @GetMapping("/{userId}/validate")
+    public ResponseEntity<Boolean> isUserExist(@PathVariable String userId){
+        System.out.println("user for validate user id"+userService.isUserExist(userId));
+        return ResponseEntity.ok(userService.isUserExist(userId));
+    }
 }

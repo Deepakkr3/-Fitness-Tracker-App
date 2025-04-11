@@ -16,12 +16,14 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class ActivityResponse {
     private String activityId;
-    private  String id;
+
+
     private String userId;
     private ActivityType activityType;
     private  Integer duration;
     private  Integer caleryburn;
     private LocalDateTime startTime;
+
 
     private LocalDateTime createAt;
 
@@ -30,12 +32,13 @@ public class ActivityResponse {
     public ActivityResponse(Activity savedActivity) {
         this.activityType=savedActivity.getActivityType();
         this.activityId=savedActivity.getActivityId();
-        this.id=savedActivity.getId();
+
         this.createAt=savedActivity.getCreateAt();
         this.updatedAt=savedActivity.getUpdatedAt();
         this.startTime=savedActivity.getStartTime();
         this.duration=savedActivity.getDuration();
         this.caleryburn=savedActivity.getCaleryburn();
+        this.userId=savedActivity.getUserId();
 
     }
 }
