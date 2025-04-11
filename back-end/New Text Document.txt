@@ -1,0 +1,8 @@
+1. for making async service communication /reactive inner service communication we can use web client 
+   make in respective service where you want to make api call like (activity service calling user to validate user id )
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-webflux</artifactId>
+    </dependency>
+
+  mcn clean install -U
