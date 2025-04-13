@@ -5,15 +5,24 @@ import com.fitness.activity_service.dto.ActivityRequest;
 import com.fitness.activity_service.dto.ActivityResponse;
 import com.fitness.activity_service.model.Activity;
 import com.fitness.activity_service.repo.ActivityRepo;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-
+@Slf4j
 @Service
 public class ActivityService {
 
+    @Value("${rabbitmq.exchange.name}")
+    String exchange;
+    @Value("${rabbitmq.routing.key}")
+    String routingKey;
+    @Autowired
+  RabbitTemplate rabbitTemplate;
     @Autowired
     ActivityRepo repository;
 
@@ -37,6 +46,17 @@ public class ActivityService {
 
         Activity savedActivity = repository.save(activity);
         ActivityResponse res = new ActivityResponse(savedActivity);
+        log.info("in activity service exchange: {} route key:{}",exchange,routingKey);
+        //publiss to rabbitmq for ai processing
+        try{
+            System.out.println("publishing to rabbitmq");
+            rabbitTemplate.convertAndSend(exchange,routingKey,res);
+
+        }catch (Exception e){
+            log.error("error in rabbitmq publisher",e);
+            System.out.println("error in rabbitmq publisher");
+            e.printStackTrace();
+        }
         return res;
 
     }
