@@ -2,6 +2,7 @@ package com.ai.aiservise.controller;
 
 
 import com.ai.aiservise.model.Recommendation;
+import com.ai.aiservise.servese.GeminiServise;
 import com.ai.aiservise.servese.RecommedationServise;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -16,12 +17,14 @@ import java.util.List;
 @RequestMapping("/api/recommendations")
 public class RecommendationController {
 
-
+  @Autowired
+  GeminiServise aiservise;
     @Autowired
     RecommedationServise recSesvise;
 
     @GetMapping("/user/{userId}")
     public ResponseEntity<List<Recommendation>> getReccommendationByUserId(@PathVariable String userId){
+        aiservise.getAnswer("how to learn java");
         return ResponseEntity.ok(recSesvise.getRecommendationByUserId(userId));
     }
     @GetMapping("/activity/{activityId}")

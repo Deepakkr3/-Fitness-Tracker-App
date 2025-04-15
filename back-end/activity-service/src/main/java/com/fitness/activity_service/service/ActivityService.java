@@ -50,7 +50,7 @@ public class ActivityService {
         //publiss to rabbitmq for ai processing
         try{
             System.out.println("publishing to rabbitmq");
-            rabbitTemplate.convertAndSend(exchange,routingKey,res);
+            rabbitTemplate.convertAndSend(exchange,routingKey,savedActivity);
 
         }catch (Exception e){
             log.error("error in rabbitmq publisher",e);

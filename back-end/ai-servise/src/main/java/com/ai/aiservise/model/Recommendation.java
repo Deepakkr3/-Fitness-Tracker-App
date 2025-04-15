@@ -22,10 +22,10 @@ public class Recommendation {
     private String id;
     private String activityId;
     private String userId;
-    private String activityType;
+    private ActivityType activityType;
     private String recommendation;
     private List<String> suggetion;
-    private List<String> seafty;
+    private List<String> impruvment;
     @CreatedDate
     private LocalDateTime createdAt;
 
