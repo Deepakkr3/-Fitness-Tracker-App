@@ -29,8 +29,12 @@ public class UserService {
 
     public UserResponse registorUser(@Valid RegisterRequest user) {
 
+
+       //if user is already exist than return user by email id
         if(userRepo.existsByEmail(user.getEmail())){
-            throw new RuntimeException("Email already exists");
+             UserC existingUser=userRepo.findByEmail(user.getEmail());
+             UserResponse resp=new UserResponse(existingUser);
+             return resp;
         }
 
         UserC  newUser = new UserC();
@@ -38,6 +42,8 @@ public class UserService {
         newUser.setFirstName(user.getFirstName());
         newUser.setLastName(user.getLastName());
         newUser.setPassword(user.getPassword());
+        newUser.setKeycklockId(user.getKeycklockId()
+        );
       UserC savedUser=  userRepo.save(newUser);
       UserResponse newResponse = new UserResponse(savedUser);
       return newResponse;
@@ -48,8 +54,8 @@ public class UserService {
         return userRepo.findAll();
     }
 
-    public Boolean isUserExist(String userId) {
-        log.info("claaing user validation servise in user microservise {}",userId);
-        return userRepo.existsById(userId);
+    public Boolean isUserExist(String keycklogId) {
+        log.info("claaing user validation servise in user microservise {}",keycklogId);
+        return userRepo.existsByKeycklockId(keycklogId);
     }
 }

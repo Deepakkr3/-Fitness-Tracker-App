@@ -37,7 +37,7 @@ public class UserController {
     public ResponseEntity<Iterable<UserC>> getAllUsers() {
         return ResponseEntity.ok(userService.getAllUsers());
     }
-
+//validate user based on keyckloag id
     @GetMapping("/{userId}/validate")
     public ResponseEntity<Boolean> isUserExist(@PathVariable String userId){
         System.out.println("user for validate user id"+userService.isUserExist(userId));

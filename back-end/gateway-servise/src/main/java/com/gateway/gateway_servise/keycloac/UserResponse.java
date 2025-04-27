@@ -1,11 +1,8 @@
-package com.fitness.userservice.dto;
+package com.gateway.gateway_servise.keycloac;
 
 
-import com.fitness.userservice.model.UserC;
-import com.fitness.userservice.model.UserRole;
 
 import lombok.Data;
-
 
 import java.time.LocalDateTime;
 
