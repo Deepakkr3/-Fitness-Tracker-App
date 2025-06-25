@@ -93,3 +93,12 @@ This is a microservices-based **Fitness Tracker Application** designed to help u
 
 ## 📂 Project Structure
 
+fitness-tracker-app/
+├── eureka-server/
+├── api-gateway/
+├── config-service/
+├── ai-service/ (Node.js + TypeScript)
+├── activity-service/ (Spring Boot + MongoDB)
+├── email-service/ (Node.js + TypeScript)
+└── shared/
+
